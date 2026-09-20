@@ -24,6 +24,7 @@
         <a href="#services">Services</a>
         <a href="#audiences">Who we serve</a>
         <a href="#scif">SCIF-capable planning</a>
+        <a href="#calculator">Risk calculator</a>
         <a href="#process">Process</a>
         <a class="nav-cta" href="#contact">Request an assessment</a>
       </nav>
@@ -117,6 +118,23 @@
           <figure class="signal-card"><img src="assets/through_wall_radar_concept.jpg" alt="Conceptual cutaway of a home with an abstract radar sweep outside showing silhouettes inside" loading="lazy" /><figcaption><span class="signal-tag">02 / SENSING RISK</span><strong>Through-wall sensing is a documented technology category.</strong><p>Privacy-oriented design can reduce certain sensing opportunities, but performance depends on equipment, geometry, distance, and conditions.</p></figcaption></figure>
         </div>
         <p class="visual-disclaimer">Illustrations are conceptual and for educational purposes only. They do not show real people, a real property, medical effects, or a guaranteed surveillance outcome.</p>
+      </div>
+    </section>
+
+    <section class="section section-light calculator-section" id="calculator">
+      <div class="container calculator-intro"><p class="eyebrow teal">Early-stage screening tool</p><h2>Where might your privacy project need attention?</h2><p class="body-copy">Answer six questions to create a directional screening result. This is not a security audit, engineering calculation, medical assessment, or guarantee of surveillance risk. It is a conversation starter for deciding whether a measured assessment is worthwhile.</p></div>
+      <div class="container calculator-shell">
+        <form class="calculator-form" id="risk-calculator">
+          <fieldset><legend>01 / Property type</legend><label><input type="radio" name="property" value="residential" checked /><span>High-value residence</span></label><label><input type="radio" name="property" value="commercial" /><span>Commercial or professional facility</span></label><label><input type="radio" name="property" value="secure" /><span>Secure-room or SCIF-capable project</span></label></fieldset>
+          <fieldset><legend>02 / Exterior envelope</legend><label><input type="radio" name="envelope" value="light" checked /><span>Lightweight construction or mixed materials</span></label><label><input type="radio" name="envelope" value="masonry" /><span>Masonry or concrete construction</span></label><label><input type="radio" name="envelope" value="unknown" /><span>Not yet documented</span></label></fieldset>
+          <fieldset><legend>03 / Openings and penetrations</legend><label><input type="radio" name="openings" value="many" checked /><span>Many windows, doors, services, or unknown penetrations</span></label><label><input type="radio" name="openings" value="some" /><span>Some known openings with documented plans</span></label><label><input type="radio" name="openings" value="controlled" /><span>Limited and controlled openings</span></label></fieldset>
+          <fieldset><legend>04 / Wireless environment</legend><label><input type="radio" name="wireless" value="dense" checked /><span>Dense wireless, cellular, Wi-Fi, or connected-device environment</span></label><label><input type="radio" name="wireless" value="moderate" /><span>Moderate wireless environment</span></label><label><input type="radio" name="wireless" value="limited" /><span>Limited or intentionally controlled wireless environment</span></label></fieldset>
+          <fieldset><legend>05 / Privacy objective</legend><label><input type="radio" name="objective" value="conversation" checked /><span>More confidential conversations and meetings</span></label><label><input type="radio" name="objective" value="communications" /><span>Controlled communications and connected systems</span></label><label><input type="radio" name="objective" value="sensitive" /><span>Highly sensitive operations or accredited-facility planning</span></label></fieldset>
+          <fieldset><legend>06 / Existing verification</legend><label><input type="radio" name="verification" value="none" checked /><span>No baseline survey or commissioning report</span></label><label><input type="radio" name="verification" value="partial" /><span>Partial testing or consultant information</span></label><label><input type="radio" name="verification" value="complete" /><span>Recent frequency-specific field testing</span></label></fieldset>
+          <button class="button button-gold" type="submit">Calculate screening result <span>→</span></button>
+          <p class="calculator-privacy">Do not enter addresses, floor plans, classified information, credentials, or detailed threat intelligence into this tool.</p>
+        </form>
+        <aside class="calculator-result" aria-live="polite"><span class="result-kicker">Your screening result</span><div class="score-ring"><strong id="risk-score">—</strong><span>/ 100</span></div><p class="result-level" id="risk-level">Complete the six questions to continue.</p><p id="risk-summary">The score is directional only. A measured site assessment is the appropriate next step for a real project.</p><a class="button button-light" href="#contact">Discuss a measured assessment <span>↗</span></a><div class="result-breakdown" id="risk-breakdown"></div></aside>
       </div>
     </section>
 

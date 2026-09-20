@@ -24,3 +24,46 @@ assessmentForm?.addEventListener('submit', (event) => {
   formStatus.textContent = `Thank you${name ? `, ${name}` : ''}. Your inquiry has been received. A member of the Extreme Privacy team will follow up discreetly.`;
   assessmentForm.reset();
 });
+
+const riskCalculator = document.querySelector('#risk-calculator');
+const riskScore = document.querySelector('#risk-score');
+const riskLevel = document.querySelector('#risk-level');
+const riskSummary = document.querySelector('#risk-summary');
+const riskBreakdown = document.querySelector('#risk-breakdown');
+
+const calculatorWeights = {
+  property: { residential: 10, commercial: 16, secure: 22 },
+  envelope: { light: 16, masonry: 8, unknown: 14 },
+  openings: { many: 18, some: 10, controlled: 4 },
+  wireless: { dense: 16, moderate: 9, limited: 4 },
+  objective: { conversation: 10, communications: 16, sensitive: 22 },
+  verification: { none: 14, partial: 7, complete: 2 },
+};
+
+const calculatorLabels = {
+  property: 'Project type', envelope: 'Envelope uncertainty', openings: 'Openings and penetrations', wireless: 'Wireless environment', objective: 'Privacy objective', verification: 'Existing verification',
+};
+
+function selectedValue(name) {
+  return riskCalculator?.querySelector(`input[name="${name}"]:checked`)?.value;
+}
+
+riskCalculator?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const values = Object.keys(calculatorWeights).reduce((result, key) => ({ ...result, [key]: selectedValue(key) }), {});
+  const breakdown = Object.entries(values).map(([key, value]) => ({ label: calculatorLabels[key], points: calculatorWeights[key][value] || 0 }));
+  const score = Math.min(100, breakdown.reduce((total, item) => total + item.points, 0));
+  let level = 'Lower initial signal';
+  let summary = 'Your answers suggest a more defined starting point, but field conditions and frequency-specific objectives still need verification.';
+  if (score >= 61) {
+    level = 'Higher coordination need';
+    summary = 'Your answers indicate several factors that warrant an early, coordinated assessment before material or construction decisions are made.';
+  } else if (score >= 36) {
+    level = 'Moderate coordination need';
+    summary = 'Your answers indicate a mixed project profile. A baseline review can help identify openings, systems, and test criteria that deserve attention.';
+  }
+  riskScore.textContent = score;
+  riskLevel.textContent = level;
+  riskSummary.textContent = summary;
+  riskBreakdown.innerHTML = breakdown.map((item) => `<div><span>${item.label}</span><b>+${item.points}</b></div>`).join('');
+});
